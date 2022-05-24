@@ -3,10 +3,10 @@
 	import WeatherFooter from '../components/weather-footer.svelte';
 	import WeatherIcon from '../components/weather-icon.svelte';
 
-	const jamonConQueso = getWeatherFrom();
+	const jamonConQueso = getWeatherFrom('Cali');
 </script>
 
-{#await jamonConQueso then weather}
+<!-- {#await jamonConQueso then weather}
 	<section>
 		<h1>{weather.locationName}</h1>
 		<h2>{weather.temperature}º</h2>
@@ -44,3 +44,4 @@
 		right: 12px;
 	}
 </style>
+ -->
