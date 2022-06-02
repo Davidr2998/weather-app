@@ -17,7 +17,9 @@
 
 <style>
 	footer {
-		border: 2px solid #000;
+		color: #fff;
+		grid-column: 2/3;
+		border: 2px solid #fff;
 		padding: 12px 32px;
 		width: 80%;
 		margin: 0 auto;
@@ -41,5 +43,17 @@
 		color: #444;
 		font-size: 14px;
 		font-weight: 500;
+	}
+
+	@media only screen and (max-width: 600px) {
+		footer {
+			grid-column: 1/2;
+		}
+	}
+
+	@media only screen and (min-width: 760px) {
+		footer {
+			grid-column: 2/3;
+		}
 	}
 </style>
