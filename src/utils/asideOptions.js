@@ -1,15 +1,18 @@
 const OPTION_SETTINGS = [
 	{
-		name: 'Today',
-		icon: '/icons/today.svg'
+		name: 'Home',
+		icon: '/icons/today.svg',
+		route: '/'
 	},
 	{
 		name: 'Calendar',
-		icon: '/icons/calendar.svg'
+		icon: '/icons/calendar.svg',
+		route: '/'
 	},
 	{
 		name: 'Settings',
-		icon: '/icons/settings.svg'
+		icon: '/icons/settings.svg',
+		route: '/'
 	}
 ];
 

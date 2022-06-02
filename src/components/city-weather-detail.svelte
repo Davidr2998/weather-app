@@ -10,7 +10,11 @@
 	<h3>{weather.conditionText}</h3>
 	<WeatherIcon text={weather.conditionText} icon={weather.conditionIcon} />
 </section>
-<WeatherFooter />
+<WeatherFooter
+	feelsLike={weather.feelsLike}
+	humidity={weather.humidity}
+	windSpeed={weather.windSpeed}
+/>
 
 <style>
 	section {

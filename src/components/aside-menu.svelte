@@ -1,8 +1,14 @@
 <script>
-	import { CITYSTORE } from '../stores/store.js';
+	import { CITYSTORE, SEARCHSTORE } from '../stores/store.js';
+	import { getCurrentDate } from '../utils/getDate';
 	import OPTION_SETTINGS from '../utils/asideOptions.js';
-	let city;
 	let current = 'foo';
+	let city;
+	let searchHistory;
+
+	SEARCHSTORE.subscribe((value) => {
+		searchHistory = [...value];
+	});
 
 	CITYSTORE.subscribe((value) => {
 		city = value;
@@ -10,23 +16,21 @@
 </script>
 
 <aside>
-	<span>May 05 2022</span>
+	<span>{getCurrentDate()}</span>
 	<ul>
-		<li class:selected={current === 'foo'} on:click={() => (current = 'foo')}>
-			<a href="/city/cali">Foo</a>
-		</li>
-		<li class:selected={current === 'bar'} on:click={() => (current = 'bar')}>
-			<a href="/city/bogota">Bar</a>
-		</li>
-		<li class:selected={current === 'baz'} on:click={() => (current = 'baz')}>
-			<a href="/city/medellin">Baz</a>
-		</li>
+		{#each searchHistory as historyOption}
+			<li>
+				<a href={`/city/${historyOption}`}>{historyOption}</a>
+			</li>
+		{/each}
 	</ul>
 	<ul>
 		{#each OPTION_SETTINGS as option}
 			<li>
-				<img src={option.icon} alt="" />
-				{option.name}
+				<a href={option.route}>
+					<img src={option.icon} alt="" />
+					{option.name}
+				</a>
 			</li>
 		{/each}
 	</ul>
@@ -34,8 +38,14 @@
 
 <style>
 	a {
+		width: 100%;
 		color: #fff;
 		text-decoration: none;
+		padding: 12px;
+		display: flex;
+		align-items: center;
+		border-radius: 5px;
+		gap: 12px;
 	}
 	aside {
 		border-top-left-radius: 3.5rem;
@@ -58,20 +68,21 @@
 
 	li {
 		display: flex;
-		align-items: center;
-		gap: 12px;
 		margin: 0;
-		padding: 12px;
 		font-size: 1.25rem;
 		letter-spacing: 0.05rem;
 		transition: all 0.25s ease-in-out;
-		border-radius: 5px;
 	}
 
-	li:hover {
+	a:hover {
 		background-color: #f5f5f5;
 		color: #000;
 		width: 100%;
+		transition: all 0.25s ease-in-out;
+	}
+
+	a:hover > img {
+		filter: brightness(0);
 		transition: all 0.25s ease-in-out;
 	}
 

@@ -1,10 +1,5 @@
 <script>
-	import { getWeatherFrom } from '../services/weather.js';
-	import CityWeatherDetail from '../components/city-weather-detail.svelte';
-
-	const jamonConQueso = getWeatherFrom('cali');
+	import SearchBar from '../components/search-bar.svelte';
 </script>
 
-{#await jamonConQueso then weather}
-	<CityWeatherDetail {weather} />
-{/await}
+<SearchBar />

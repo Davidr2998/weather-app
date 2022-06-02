@@ -1,3 +1,7 @@
 import { writable } from 'svelte/store';
 
-export const CITYSTORE = writable('');
+const CITYSTORE = writable('');
+
+const SEARCHSTORE = writable([]);
+
+export { CITYSTORE, SEARCHSTORE };
